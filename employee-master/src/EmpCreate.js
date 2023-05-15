@@ -2,16 +2,16 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 
 const EmpCreate = () => {
-    const[firstName,setfirstName]=useState("");
-    const[lastName,setlastName]=useState("");
-    const[email, emailchange]=useState("");
-    const[img,setimg]=useState("");
+    const[title,setfirstName]=useState("");
+    const[price,setlastName]=useState("");
+    // const[email, emailchange]=useState("");
+    // const[img,setimg]=useState("");
     
 
     const handlesubmit=(e)=>{
       e.preventDefault();
-      const empdata={firstName,lastName,email,img};
-      
+      //const empdata={firstName,lastName,email,img};
+      const empdata={title,price};
 
       fetch("http://localhost:8080/employees",{
         method:"POST",
@@ -34,7 +34,7 @@ const EmpCreate = () => {
 
                         <div className="card" style={{"textAlign":"left"}}>
                             <div className="card-title">
-                                <h2>Employee Create</h2>
+                                <h2>Add Book</h2>
                             </div>
                             <div className="card-body">
 
@@ -44,33 +44,20 @@ const EmpCreate = () => {
 
                                     <div className="col-lg-12">
                                         <div className="form-group">
-                                            <label>First Name</label>
-                                            <input required value={firstName}  onChange={e=>setfirstName(e.target.value)} className="form-control"></input>
+                                            <label>Title</label>
+                                            <input required value={title}  onChange={e=>setfirstName(e.target.value)} className="form-control"></input>
                                        
                                         </div>
                                     </div>
 
                                     <div className="col-lg-12">
                                         <div className="form-group">
-                                            <label>Last Name</label>
-                                            <input value={lastName} onChange={e=>setlastName(e.target.value)} className="form-control"></input>
+                                            <label>Price</label>
+                                            <input value={price} onChange={e=>setlastName(e.target.value)} className="form-control"></input>
                                         </div>
                                     </div>
 
-                                    <div className="col-lg-12">
-                                        <div className="form-group">
-                                            <label>Email</label>
-                                            <input value={email} onChange={e=>emailchange(e.target.value)} className="form-control"></input>
-                                        </div>
-                                    </div>
-
-                                    <div className="col-lg-12">
-                                        <div className="form-group">
-                                            <label>Image</label>
-                                            <input value={img} onChange={e=>setimg(e.target.value)} className="form-control"></input>
-                                        </div>
-                                    </div>
-                                   
+                               
                                     <div className="col-lg-12">
                                         <div className="form-group">
                                            <button className="btn btn-success" type="submit">Save</button>

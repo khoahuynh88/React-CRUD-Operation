@@ -5,7 +5,7 @@ import './search.css';
 const EmpListing = () => {
     const [empdata, empdatachange] = useState(null);
     const navigate = useNavigate();
-    const [query, setQuery] = useState("");
+   // const [query, setQuery] = useState("");
     
     const LoadDetail = (id) => {
         navigate("/employee/detail/" + id);
@@ -39,16 +39,14 @@ const EmpListing = () => {
         })
     }, [])
   
-   console.log(query);
+   //console.log(query);
     return (
         <div className="container">
             <div className="card">
                 <div className="card-title">
-                    <h2>Employee Listing</h2>
+                    <h2>Book Listing</h2>
                 </div>
-                <div className ="search">
-                <input type="text" placeholder="Search" onChange={e=> setQuery(e.target.value)} />
-                </div>
+                
                 <div className="card-body">
                     <div className="divbtn">
                         <Link to="employee/create" className="btn btn-success">Create</Link>
@@ -57,25 +55,20 @@ const EmpListing = () => {
                         <thead className="bg-dark text-white">
                             <tr>
                                 <td>ID</td>
-                                <td>IMG</td>
-                                <td>First Name</td>
-                                <td>Last Name</td>
-                                <td>Email</td>
+                                <td>Title</td>
+                                <td>Price</td>
                                 <td>Action</td>
                             </tr>
                         </thead>
                         <tbody>
 
                             {empdata &&
-                                empdata.filter((item)=>{
-                                    return query.toLowerCase() ==='' ? item: item.firstName.toLowerCase().includes(query);
-                                }).map(item => (
+                                empdata.map(item => (
                                     <tr key={item.id}>
                                         <td>{item.id}</td>
-                                        <td><img src={item.img} /></td>
-                                        <td>{item.firstName}</td>
-                                        <td>{item.lastName}</td>
-                                        <td>{item.email}</td>
+                                        <td>{item.title}</td>
+                                        <td>${item.price}</td>
+                                        
                                         <td><a onClick={() => { LoadEdit(item.id) }} className="btn btn-success">Edit</a>
                                             <a onClick={() => { Removefunction(item.id) }} className="btn btn-danger">Remove</a>
                                             <a onClick={() => { LoadDetail(item.id) }} className="btn btn-primary">Details</a>

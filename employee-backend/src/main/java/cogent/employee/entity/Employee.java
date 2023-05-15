@@ -12,7 +12,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "employees")
+@Table(name = "books")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -22,15 +22,15 @@ public class Employee {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
-    private String firstName;
+    private String title;
     
-    private String lastName;
+    private double price;
       
-    private String email;
-    
-    @Lob
-    @Column
-    private String img;
+//    private String email;
+//    
+//    @Lob
+//    @Column
+//    private String img;
     
     // Default constructor, getters and setters
 }

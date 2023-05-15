@@ -30,18 +30,17 @@ const EmpDetail = () => {
                 
             <div className="card row" style={{ "textAlign": "left" }}>
                 <div className="card-title">
-                    <h2>Employee Details</h2>
+                    <h2>Book Details</h2>
                 </div>
                
                 <div className="card-body"></div>
 
                 {empdata &&
                     <div>
-                        <img src={empdata.img} />
-                        <h2>Employee id: {empdata.id}</h2>
-                        <h2>The Employee name is : <b>{empdata.firstName} {empdata.lastName}</b>  </h2>
-                        <h2>Contact Details</h2>
-                        <h2>Email is : {empdata.email}</h2>
+                       
+                        <h2>Book id: {empdata.id}</h2>
+                        <h2>Book title : <b>{empdata.title} </b>  </h2>
+                        <h2>Book Price : <b>${empdata.price}</b>  </h2>
                         
                         <Link className="btn btn-danger" to="/">Back to Listing</Link>
                     </div>
