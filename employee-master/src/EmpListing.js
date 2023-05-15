@@ -5,7 +5,7 @@ import './search.css';
 const EmpListing = () => {
     const [empdata, empdatachange] = useState(null);
     const navigate = useNavigate();
-   // const [query, setQuery] = useState("");
+    const [query, setQuery] = useState("");
     
     const LoadDetail = (id) => {
         navigate("/employee/detail/" + id);
@@ -39,14 +39,16 @@ const EmpListing = () => {
         })
     }, [])
   
-   //console.log(query);
+   console.log(query);
     return (
         <div className="container">
             <div className="card">
                 <div className="card-title">
                     <h2>Book Listing</h2>
                 </div>
-                
+                <div className ="search">
+                <input type="text" placeholder="Search" onChange={e=> setQuery(e.target.value)} />
+                </div>
                 <div className="card-body">
                     <div className="divbtn">
                         <Link to="employee/create" className="btn btn-success">Create</Link>
@@ -63,7 +65,9 @@ const EmpListing = () => {
                         <tbody>
 
                             {empdata &&
-                                empdata.map(item => (
+                                empdata.filter((item)=>{
+                                    return query.toLowerCase() ==='' ? item: item.title.toLowerCase().includes(query);
+                                }).map(item => (
                                     <tr key={item.id}>
                                         <td>{item.id}</td>
                                         <td>{item.title}</td>
